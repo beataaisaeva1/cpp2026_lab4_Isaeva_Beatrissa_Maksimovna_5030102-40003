@@ -1,14 +1,19 @@
-#include "ball.h"
+#include "Ball.h"
+#include "Constants.h"
 
 Ball::Ball(float x, float y) {
-	shape.setRadius(10.f);
+	shape.setRadius(BALL_RADIUS);
 	shape.setFillColor(sf::Color::White);
 	shape.setPosition(x, y);
 
-	velocity = { 3.f, -3.f };
+	stuck = false;
+	alive = true;
+
+	velocity = { BALL_SPEED, -BALL_SPEED };
 }
 
 void Ball::update() {
 	shape.move(velocity);
 }
+
 

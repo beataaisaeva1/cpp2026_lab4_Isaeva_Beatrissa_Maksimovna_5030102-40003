@@ -1,7 +1,8 @@
-#include "block.h"
+#include "Block.h"
+#include "Constants.h"
 
 Block::Block(float x, float y, BlockType t, int health) {
-	shape.setSize({ 60.f, 25.f });
+	shape.setSize({ BLOCK_WIDTH, BLOCK_HEIGHT });
 	shape.setPosition(x, y);
 
 	hp = health;
@@ -26,4 +27,5 @@ Block::Block(float x, float y, BlockType t, int health) {
 		break;
 	}
 }
+
 

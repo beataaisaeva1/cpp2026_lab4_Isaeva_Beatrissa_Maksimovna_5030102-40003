@@ -1,24 +1,20 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-enum BonusType {
-	BIG_CARRIAGE,
-	SLOW_BALL,
-	STICKY_BALL,
-	BOTTOM_SHIELD,
-	EXTRA_BALL
-};
+class Game;
 
 class Bonus {
 public:
 	sf::CircleShape shape;
 
-	BonusType type;
 	bool active;
 
-	Bonus(float x, float y, BonusType t);
+	Bonus(float x, float y);
 
-	void update();
+	virtual void update();
+
+	virtual void activate(Game& game) = 0;
+
+	virtual ~Bonus() = default;
 };
-
 

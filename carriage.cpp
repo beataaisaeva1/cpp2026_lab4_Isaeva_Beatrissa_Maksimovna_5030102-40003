@@ -1,13 +1,14 @@
-#include "carriage.h"
+#include "Carriage.h"
+#include "Constants.h"
 
 Carriage::Carriage() {
-	shape.setSize({ 120.f, 20.f });
-	shape.setFillColor(sf::Color::Green);
-	shape.setPosition(340.f, 550.f);
+    shape.setSize({CARRIAGE_WIDTH, CARRIAGE_HEIGHT });
+    shape.setFillColor(sf::Color::Green);
+    shape.setPosition(340.f, 550.f);
 }
 
 void Carriage::update() {
-    float speed = 7.f;
+    float speed = CARRIAGE_SPEED;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         shape.move(-speed, 0.f);
@@ -17,6 +18,4 @@ void Carriage::update() {
         shape.move(speed, 0.f);
     }
 }
-
-
 
