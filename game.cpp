@@ -32,8 +32,12 @@ Game::Game() : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Arkanoid"), r
                 type = UNBREAKABLE;
                 hp = UNBREAKABLE_HP;
             }
-            else if (randomType <= 4) {
+            else if (randomType <= 3) {
                 type = BONUS;
+                hp = 1;
+            }
+            else if (randomType == 4) {
+                type = SPEED;
                 hp = 1;
             }
             else {
@@ -145,6 +149,22 @@ void Game::run() {
                     if (block.type == UNBREAKABLE) {
                         break;
                     }
+
+                    if (block.type == SPEED) {
+                        if (ball.velocity.x > 0) {
+                            ball.velocity.x += 1.f;
+                        }
+                        else {
+                            ball.velocity.x -= 1.f;
+                        }
+                        if (ball.velocity.y > 0) {
+                            ball.velocity.y += 1.f;
+                        }
+                        else {
+                            ball.velocity.y -= 1.f;
+                        }
+                    }
+
                     block.hp--;
                     score++;
                     std::cout << "Score: " << score << "(+1)" << std::endl;
